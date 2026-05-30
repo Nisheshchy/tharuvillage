@@ -1,20 +1,5 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-## Project Overview
+# Tharu Village
 
 Tharu Village is a modern web application built with React and Vite, showcasing the cultural heritage and attractions of the Tharu community. It provides an engaging, responsive experience with smooth navigation and dynamic content.
 
@@ -61,8 +46,8 @@ Contributions are welcome! Please fork the repository, create a feature branch, 
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/tharu-village.git
-cd tharu-village
+git clone https://github.com/Nisheshchy/tharuvillage.git
+cd tharuvillage
 
 # Install dependencies
 npm install
@@ -77,13 +62,8 @@ npm run dev
 
 Visit `http://localhost:5173` in your browser to explore the site.
 
-## Screenshots
-
-*(Add screenshots of the application here. Use markdown image syntax, e.g., `![Home Page](screenshots/home.png)`) *
-
-## Contact
-
-For questions or suggestions, please open an issue or contact the maintainer at [email@example.com](mailto:email@example.com).
+## Author
+Nishesh Chaudhary
 
 ## License
 
