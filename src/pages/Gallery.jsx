@@ -60,35 +60,35 @@ const Gallery = () => {
     },
     {
       id: 6,
-      category: "Tharu Traditionally",
+      category: "art",
       title: "Tharu Women Traditionally Working Together",
-      desc: "tharu women traditionally working together with the sharing the better  memory.",
+      desc: "Tharu women working together and sharing their cultural stories.",
       image:
         "https://ajadynasty.com/wp-content/uploads/2022/06/16642019622_ecc3c0a489_o-1.jpg",
     },
 
     {
       id: 7,
-      category: "Tattoo Art",
+      category: "art",
       title: "Tharu Traditional Tattoo Art",
-      desc: "tharu women get tattoo on their body.",
+      desc: "Traditional Tharu body art created as part of identity, ritual, and celebration.",
       image:
         "https://media.nepalitimes.com/1/p/20250118140116_6eb8b5b2129dd3ed687e2d77eeed7f11107aa7b4320eac00396c64130c7dbe17.jpg",
     },
 
     {
       id: 8,
-      category: "Tharu Traditionally",
-      title: "Tharu People are working together.",
-      desc: "tharu people traditionally working together with the sharing the better  memory.",
+      category: "art",
+      title: "Tharu People Working Together",
+      desc: "Community life in Tharu villages revolves around shared labor, storytelling, and celebration.",
       image:
         "https://www.chitwantourism.com/wp-content/uploads/2024/01/tharu-village-gallery-5.jpg",
     },
     {
       id: 9,
-      category: "Tharu Traditionally Marrige",
-      title: "Tharu Marrige.",
-      desc: "tharu showing their marrige retrival.",
+      category: "art",
+      title: "Tharu Marriage Celebration",
+      desc: "A joyful wedding scene featuring traditional dress and ceremonial rituals.",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCa6fWJj2778F_YW46Lg2NfEjtwQi0asTLJQ&s",
     },
