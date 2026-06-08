@@ -13,70 +13,85 @@ const Gallery = () => {
   const galleryItems = [
     {
       id: 1,
-      category: 'art',
-      title: 'Traditional Tharu Wall Painting',
-      desc: 'Ornate geometric clay reliefs carved directly onto cottage outer walls.',
-      image: 'https://risingnepaldaily.com/storage/media/58411/THARU-PAINTING.jpg',
+      category: "art",
+      title: "Traditional Tharu Wall Painting",
+      desc: "Ornate geometric clay reliefs carved directly onto cottage outer walls.",
+      image:
+        "https://risingnepaldaily.com/storage/media/58411/THARU-PAINTING.jpg",
     },
     {
       id: 2,
-      category: 'art',
-      title: 'Tharu Wall Art Kobar',
-      desc: 'where the wall make the art',
-      image: 'https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/482008589_960728476177172_8655726369359576767_n.jpg?stp=dst-jpg_s1080x2048_tt6&_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=Ys4rYLLVVDUQ7kNvwHi4ppw&_nc_oc=AdqC35-aNzNnYZPHK4rXMewA8aOZb2HNCTjsY97zzyCnjdMOH236gd1L8s8rnYb_dRDh1pOOs7fUhXxUHQeeAT-D&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=dvAkBzkg-iA5GlfkYhSJ2Q&_nc_ss=7b289&oh=00_Af6icTE02QYdPOFPx1l3jcHBFjhAX7JEhb5X-znR--erDA&oe=6A1F8B9B',
+      category: "art",
+      title: "Tharu Wall Art Kobar",
+      desc: "where the wall make the art",
+      image:
+        "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/482008589_960728476177172_8655726369359576767_n.jpg?stp=dst-jpg_s1080x2048_tt6&_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=Ys4rYLLVVDUQ7kNvwHi4ppw&_nc_oc=AdqC35-aNzNnYZPHK4rXMewA8aOZb2HNCTjsY97zzyCnjdMOH236gd1L8s8rnYb_dRDh1pOOs7fUhXxUHQeeAT-D&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=dvAkBzkg-iA5GlfkYhSJ2Q&_nc_ss=7b289&oh=00_Af6icTE02QYdPOFPx1l3jcHBFjhAX7JEhb5X-znR--erDA&oe=6A1F8B9B",
     },
     {
       id: 3,
-      category: 'dress',
-      title: 'Traditional Tharu Bridal Attire',
-      desc: 'Elegant red-bordered white saris decorated with hand-sewn shells and silver thread.',
-      image: 'https://scontent.fbir1-1.fna.fbcdn.net/v/t1.6435-9/174327173_716116169100043_3553318233771004604_n.jpg?stp=dst-jpg_p960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_ohc=jZvuOKHTaD0Q7kNvwH4d4Hh&_nc_oc=AdrtY3rxFxrNA8HrqqS1oRea7eY93dG0mq0rGtUeVm29TGawXDUie1GAvvaVbzVDvvE6J2FWLDM7mc-1XJLeVPl4&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=9_OqkMtbC2Tiim-0xGTHhQ&_nc_ss=7b289&oh=00_Af9BObJ2MbZL_VRFNITygYVfOcqon1zXQWRDWIclJCB9Qw&oe=6A488B31',
+      category: "dress",
+      title: "Traditional Tharu Bridal Attire",
+      desc: "Elegant red-bordered white saris decorated with hand-sewn shells and silver thread.",
+      image:
+        "https://scontent.fbir1-1.fna.fbcdn.net/v/t1.6435-9/174327173_716116169100043_3553318233771004604_n.jpg?stp=dst-jpg_p960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_ohc=jZvuOKHTaD0Q7kNvwH4d4Hh&_nc_oc=AdrtY3rxFxrNA8HrqqS1oRea7eY93dG0mq0rGtUeVm29TGawXDUie1GAvvaVbzVDvvE6J2FWLDM7mc-1XJLeVPl4&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=9_OqkMtbC2Tiim-0xGTHhQ&_nc_ss=7b289&oh=00_Af9BObJ2MbZL_VRFNITygYVfOcqon1zXQWRDWIclJCB9Qw&oe=6A488B31",
     },
     {
       id: 4,
-      category: 'crafts',
-      title: 'Jute and Bamboo Dhaki Basketry',
-      desc: 'Durable, vibrant coiled grass baskets used for carrying grains and flowers.',
-      image: 'https://cdn.shopify.com/s/files/1/1194/1498/files/02-IMG-20240708-WA0034.jpg?v=1735196903',
+      category: "crafts",
+      title: "Jute and Bamboo Dhaki Basketry",
+      desc: "Durable, vibrant coiled grass baskets used for carrying grains and flowers.",
+      image:
+        "https://cdn.shopify.com/s/files/1/1194/1498/files/02-IMG-20240708-WA0034.jpg?v=1735196903",
     },
     {
       id: 4,
-      category: 'art',
-      title: 'Clay relief peacock carvings',
-      desc: 'Sacred clay mold designs representing long life and positive energy.',
-      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Mokha_Art13.jpg/250px-Mokha_Art13.jpg',
+      category: "art",
+      title: "Clay relief peacock carvings",
+      desc: "Sacred clay mold designs representing long life and positive energy.",
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Mokha_Art13.jpg/250px-Mokha_Art13.jpg",
     },
     {
       id: 5,
-      category: 'dress',
-      title: 'Ethnic Silver Hansuli & Jewelry',
-      desc: 'Thick, handcrafted sterling silver collar necklets worn during ceremonial dances.',
-      image: 'https://scontent.fbir1-1.fna.fbcdn.net/v/t1.6435-9/174327173_716116169100043_3553318233771004604_n.jpg?stp=dst-jpg_p960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_ohc=jZvuOKHTaD0Q7kNvwH4d4Hh&_nc_oc=AdrtY3rxFxrNA8HrqqS1oRea7eY93dG0mq0rGtUeVm29TGawXDUie1GAvvaVbzVDvvE6J2FWLDM7mc-1XJLeVPl4&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=9_OqkMtbC2Tiim-0xGTHhQ&_nc_ss=7b289&oh=00_Af9BObJ2MbZL_VRFNITygYVfOcqon1zXQWRDWIclJCB9Qw&oe=6A488B31',
+      category: "dress",
+      title: "Ethnic Silver Hansuli & Jewelry",
+      desc: "Thick, handcrafted sterling silver collar necklets worn during ceremonial dances.",
+      image: "https://risingnepaldaily.com/storage/media/87607/Untitled-1.jpg",
     },
     {
       id: 6,
-      category: 'Tharu Traditionally',
-      title: 'Tharu Women Traditionally Working Together',
-      desc: 'tharu women traditionally working together with the sharing the better  memory.',
-      image: 'https://ajadynasty.com/wp-content/uploads/2022/06/16642019622_ecc3c0a489_o-1.jpg',
+      category: "Tharu Traditionally",
+      title: "Tharu Women Traditionally Working Together",
+      desc: "tharu women traditionally working together with the sharing the better  memory.",
+      image:
+        "https://ajadynasty.com/wp-content/uploads/2022/06/16642019622_ecc3c0a489_o-1.jpg",
     },
 
     {
       id: 7,
-      category: 'Tattoo Art',
-      title: 'Tharu Traditional Tattoo Art',
-      desc: 'tharu women get tattoo on their body.',
-      image: 'https://media.nepalitimes.com/1/p/20250118140116_6eb8b5b2129dd3ed687e2d77eeed7f11107aa7b4320eac00396c64130c7dbe17.jpg',
+      category: "Tattoo Art",
+      title: "Tharu Traditional Tattoo Art",
+      desc: "tharu women get tattoo on their body.",
+      image:
+        "https://media.nepalitimes.com/1/p/20250118140116_6eb8b5b2129dd3ed687e2d77eeed7f11107aa7b4320eac00396c64130c7dbe17.jpg",
     },
 
     {
       id: 8,
-      category: 'Tharu Traditionally',
-      title: 'Tharu People are working together.',
-      desc: 'tharu people traditionally working together with the sharing the better  memory.',
-      image: 'https://www.chitwantourism.com/wp-content/uploads/2024/01/tharu-village-gallery-5.jpg',
+      category: "Tharu Traditionally",
+      title: "Tharu People are working together.",
+      desc: "tharu people traditionally working together with the sharing the better  memory.",
+      image:
+        "https://www.chitwantourism.com/wp-content/uploads/2024/01/tharu-village-gallery-5.jpg",
     },
-
+    {
+      id: 9,
+      category: "Tharu Traditionally Marrige",
+      title: "Tharu Marrige.",
+      desc: "tharu showing their marrige retrival.",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCa6fWJj2778F_YW46Lg2NfEjtwQi0asTLJQ&s",
+    },
   ];
 
   const filteredItems = filter === 'all'
