@@ -26,17 +26,19 @@
 }
 
 @utility glass-card {
-  background: rgba(247, 244, 235, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(192, 92, 62, 0.15);
+  background: rgba(247, 244, 235, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(192, 92, 62, 0.16);
+  box-shadow: 0 24px 60px rgba(31, 36, 33, 0.08);
 }
 
 @utility glass-card-dark {
-  background: rgba(31, 36, 33, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(217, 155, 38, 0.15);
+  background: rgba(31, 36, 33, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(217, 155, 38, 0.18);
+  box-shadow: 0 32px 80px rgba(31, 36, 33, 0.22);
 }
 
 @utility tharu-border-top {
@@ -119,6 +121,10 @@ html {
   scroll-behavior: smooth;
   font-family: 'Outfit', sans-serif;
   background-color: var(--color-cream);
+  background-image:
+    radial-gradient(circle at 15% 10%, rgba(217, 155, 38, 0.18), transparent 22%),
+    radial-gradient(circle at 85% 18%, rgba(192, 92, 62, 0.12), transparent 16%),
+    radial-gradient(circle at 50% 90%, rgba(42, 75, 53, 0.10), transparent 20%);
   color: var(--color-slate);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -127,12 +133,32 @@ html {
 
 body {
   overflow-x: hidden;
+  position: relative;
 }
 
-/* Custom Focus Ring styling */
-*:focus-visible {
-  outline: 2px solid var(--color-ochre);
-  outline-offset: 4px;
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.32), transparent 20%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.14), transparent 18%);
+  opacity: 0.55;
+  z-index: -1;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  transition: all 0.25s ease-in-out;
+}
+
+::selection {
+  background: rgba(217, 155, 38, 0.25);
+  color: var(--color-slate);
 }
 
 /* Premium Scrollbar */
