@@ -1,8 +1,22 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Landmark, Mail, Phone, MapPin, Globe, Hash, ExternalLink, Heart } from 'lucide-react';
+import { useToast } from './Toast';
 
 const Footer = () => {
+  const [email, setEmail] = useState('');
   const currentYear = new Date().getFullYear();
+  const toast = useToast();
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    if (!email || !email.includes('@')) {
+      toast('Please enter a valid email address.', 'warning');
+      return;
+    }
+    toast(`Welcome! ${email} has been subscribed to our newsletter.`, 'success');
+    setEmail('');
+  };
 
   return (
     <footer className="bg-slate text-cream/90 relative pt-16 pb-8 overflow-hidden border-t-4 border-terracotta tharu-border-top">
@@ -13,10 +27,10 @@ const Footer = () => {
         {/* Brand Column */}
         <div className="space-y-5">
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="bg-terracotta p-2 rounded-xl text-cream-light transition-transform duration-300 group-hover:scale-105">
+            <div className="bg-terracotta p-2 rounded-xl text-cream-light transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
               <Landmark size={24} />
             </div>
-            <span className="font-serif font-bold text-2xl tracking-wide text-cream">
+            <span className="font-bold text-2xl tracking-wide text-cream">
               Tharu <span className="text-ochre">Village</span>
             </span>
           </Link>
@@ -28,17 +42,23 @@ const Footer = () => {
           <div className="flex space-x-4 pt-2">
             <a
               href="#"
-              className="bg-slate-light p-2 rounded-lg text-cream/80 hover:text-ochre hover:bg-terracotta/20 transition-all duration-300">
+              className="bg-slate-light p-2.5 rounded-xl text-cream/80 hover:text-ochre hover:bg-terracotta/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              aria-label="Website"
+            >
               <Globe size={18} />
             </a>
             <a
               href="#"
-              className="bg-slate-light p-2 rounded-lg text-cream/80 hover:text-ochre hover:bg-terracotta/20 transition-all duration-300">
+              className="bg-slate-light p-2.5 rounded-xl text-cream/80 hover:text-ochre hover:bg-terracotta/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              aria-label="Social Media"
+            >
               <Hash size={18} />
             </a>
             <a
               href="#"
-              className="bg-slate-light p-2 rounded-lg text-cream/80 hover:text-ochre hover:bg-terracotta/20 transition-all duration-300">
+              className="bg-slate-light p-2.5 rounded-xl text-cream/80 hover:text-ochre hover:bg-terracotta/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              aria-label="External Link"
+            >
               <ExternalLink size={18} />
             </a>
           </div>
@@ -46,7 +66,7 @@ const Footer = () => {
 
         {/* Quick Links Column */}
         <div>
-          <h4 className="font-serif font-bold text-lg text-cream mb-6 tracking-wide relative after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-8 after:h-[2px] after:bg-ochre">
+          <h4 className="font-bold text-lg text-cream mb-6 tracking-wide relative after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-8 after:h-[2px] after:bg-ochre">
             Quick Navigation
           </h4>
           <ul className="space-y-3.5 text-sm">
@@ -90,7 +110,7 @@ const Footer = () => {
 
         {/* Contact Info Column */}
         <div>
-          <h4 className="font-serif font-bold text-lg text-cream mb-6 tracking-wide relative after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-8 after:h-[2px] after:bg-ochre">
+          <h4 className="font-bold text-lg text-cream mb-6 tracking-wide relative after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-8 after:h-[2px] after:bg-ochre">
             Get in Touch
           </h4>
           <ul className="space-y-4 text-sm">
@@ -99,41 +119,43 @@ const Footer = () => {
               <span>
                 Tharu Village,
                 <br />
-                Nepal
+                Chitwan, Nepal
               </span>
             </li>
             <li className="flex items-center space-x-3 text-cream/75">
               <Phone size={18} className="text-ochre flex-shrink-0" />
-              <span>+977-9801234567</span>
+              <a href="tel:+9779801234567" className="hover:text-ochre transition-colors duration-300">+977-9801234567</a>
             </li>
             <li className="flex items-center space-x-3 text-cream/75">
               <Mail size={18} className="text-ochre flex-shrink-0" />
-              <span>explore@tharuvillage.com</span>
+              <a href="mailto:explore@tharuvillage.com" className="hover:text-ochre transition-colors duration-300">explore@tharuvillage.com</a>
             </li>
           </ul>
         </div>
 
         {/* Newsletter Column */}
         <div>
-          <h4 className="font-serif font-bold text-lg text-cream mb-6 tracking-wide relative after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-8 after:h-[2px] after:bg-ochre">
+          <h4 className="font-bold text-lg text-cream mb-6 tracking-wide relative after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-8 after:h-[2px] after:bg-ochre">
             Newsletter
           </h4>
           <p className="text-cream/70 text-sm leading-relaxed mb-4">
             Subscribe to receive updates on cultural festivals, organic recipes,
             and ecotourism activities.
           </p>
-          <form onSubmit={(e) => e.preventDefault()} className="space-y-3">
+          <form onSubmit={handleSubscribe} className="space-y-3">
             <div className="relative">
               <input
                 type="email"
                 placeholder="Your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full bg-slate-light border border-cream/15 rounded-xl px-4 py-3 text-sm text-cream placeholder-cream/40 focus:outline-none focus:border-ochre transition-colors duration-300"
+                className="form-input w-full"
               />
             </div>
             <button
               type="submit"
-              className="w-full bg-ochre hover:bg-ochre-dark text-slate font-semibold py-3 px-4 rounded-xl transition-all duration-300 text-sm hover:scale-[1.01]">
+              className="w-full bg-ochre hover:bg-ochre-dark text-slate font-semibold py-3 px-4 rounded-xl transition-all duration-300 text-sm hover:scale-[1.02] hover:shadow-lg">
               Subscribe
             </button>
           </form>
@@ -148,14 +170,14 @@ const Footer = () => {
               <p className="text-sm uppercase tracking-[0.35em] text-ochre/80 font-semibold">
                 Join the cultural journey
               </p>
-              <h3 className="text-3xl font-serif font-bold tracking-tight text-cream">
+              <h3 className="text-3xl font-bold tracking-tight text-cream">
                 Stay updated with village festivals, food stories and homestay
                 offers.
               </h3>
             </div>
             <Link
               to="/about"
-              className="inline-flex items-center justify-center rounded-full bg-terracotta text-cream px-8 py-4 font-semibold uppercase tracking-wider shadow-lg hover:bg-terracotta-dark">
+              className="inline-flex items-center justify-center rounded-full bg-terracotta text-cream px-8 py-4 font-semibold uppercase tracking-wider shadow-lg hover:bg-terracotta-dark transition-all duration-300 hover:scale-[1.04] hover:shadow-xl">
               Learn More
             </Link>
           </div>
@@ -173,12 +195,12 @@ const Footer = () => {
           © {currentYear} Tharu Village Cultural Center. All Rights Reserved.
         </p>
         <p className="flex items-center justify-center space-x-1">
-          <span>Designed with</span>
+          <span>Designed by</span>
           <Heart
             size={12}
             className="text-terracotta fill-terracotta animate-pulse"
           />
-          <span>to honor Nepal's rich indigenous heritage.</span>
+          <span>Nishesh Chaudhary.</span>
         </p>
       </div>
     </footer>
