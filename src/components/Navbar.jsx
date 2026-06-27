@@ -34,7 +34,7 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Animate mobile menu open/close
+  // Animate mobile menu open
   useEffect(() => {
     if (isOpen) {
       gsap.fromTo(
@@ -42,12 +42,21 @@ const Navbar = () => {
         { opacity: 0, y: -20 },
         { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' }
       );
-      // Stagger animate links inside mobile menu
       gsap.fromTo(
         mobileMenuRef.current.querySelectorAll('.mobile-link'),
         { opacity: 0, x: -20 },
         { opacity: 1, x: 0, duration: 0.3, stagger: 0.05, delay: 0.1, ease: 'power2.out' }
       );
+    } else {
+      // Animate close
+      if (mobileMenuRef.current) {
+        gsap.to(mobileMenuRef.current, {
+          opacity: 0,
+          y: -10,
+          duration: 0.25,
+          ease: 'power2.in',
+        });
+      }
     }
   }, [isOpen]);
 
@@ -67,16 +76,16 @@ const Navbar = () => {
   return (
     <nav
       ref={navRef}
-      className="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-transparent py-4 md:py-5 border-b border-terracotta/5 backdrop-blur-xl">
+      className="fixed top-0 left-0 w-full z-50 transition-all duration-500 bg-transparent py-4 md:py-5 border-b border-terracotta/5 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
         {/* Logo Section */}
         <NavLink
           to="/"
           className="flex items-center space-x-3 text-slate hover:opacity-90 group transition-all duration-300">
-          <div className="bg-terracotta p-2 rounded-xl text-cream-light shadow-sm transition-transform duration-300 group-hover:scale-105 group-hover:rotate-6">
+          <div className="bg-terracotta p-2 rounded-xl text-cream-light shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
             <Landmark size={24} />
           </div>
-          <span className="font-serif font-bold text-xl tracking-wide">
+          <span className="font-bold text-xl tracking-wide">
             Tharu <span className="text-terracotta">Village</span>
           </span>
         </NavLink>
@@ -95,16 +104,14 @@ const Navbar = () => {
               {({ isActive }) => (
                 <>
                   {link.name}
-                  {isActive && (
-                    <span className="absolute bottom-0 left-0 w-full h-[2px] bg-terracotta rounded-full" />
-                  )}
+                  <span className={`absolute bottom-0 left-0 h-[2px] bg-terracotta rounded-full transition-all duration-300 ${isActive ? 'w-full' : 'w-0'}`} />
                 </>
               )}
             </NavLink>
           ))}
           <NavLink
             to="/travel"
-            className="bg-forest hover:bg-forest-light text-cream font-medium text-sm uppercase px-5 py-2.5 rounded-full transition-all duration-300 shadow-sm hover:shadow-md hover:scale-[1.02]">
+            className="bg-forest hover:bg-forest-light text-cream font-semibold text-sm uppercase px-5 py-2.5 rounded-full transition-all duration-300 shadow-sm hover:shadow-lg hover:scale-[1.04] hover:-translate-y-0.5">
             Plan Journey
           </NavLink>
         </div>
@@ -115,7 +122,7 @@ const Navbar = () => {
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
           aria-label="Toggle menu"
-          className="md:hidden p-2 text-slate hover:text-terracotta transition-colors duration-300 focus:outline-none">
+          className="md:hidden p-2 text-slate hover:text-terracotta transition-colors duration-300 focus:outline-none rounded-lg hover:bg-terracotta/10">
           {isOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
       </div>
@@ -131,10 +138,10 @@ const Navbar = () => {
                 key={link.path}
                 to={link.path}
                 className={({ isActive }) =>
-                  `mobile-link text-lg font-medium py-1 transition-colors duration-300 border-l-2 pl-3 ${
+                  `mobile-link text-lg font-medium py-2 px-3 transition-all duration-300 rounded-lg ${
                     isActive
-                      ? "border-terracotta text-terracotta bg-terracotta/5"
-                      : "border-transparent text-slate/85"
+                      ? "text-terracotta bg-terracotta/8 border-l-4 border-terracotta"
+                      : "text-slate/85 border-l-4 border-transparent hover:bg-cream-dark"
                   }`
                 }>
                 {link.name}
@@ -143,7 +150,7 @@ const Navbar = () => {
             <div className="mobile-link pt-4">
               <NavLink
                 to="/travel"
-                className="block text-center bg-terracotta hover:bg-terracotta-dark text-cream font-semibold py-3 px-6 rounded-xl transition-all duration-300 shadow">
+                className="block text-center bg-terracotta hover:bg-terracotta-dark text-cream font-semibold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02]">
                 Plan Journey
               </NavLink>
             </div>
