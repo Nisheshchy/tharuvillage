@@ -1,13 +1,16 @@
-import { useState, useEffect, useRef } from 'react';
-import { Palette, Compass, Star, Eye } from 'lucide-react';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { Palette, Eye, X } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Transition from '../components/Transition';
+import ImageLightbox from '../components/ImageLightbox';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Gallery = () => {
   const [filter, setFilter] = useState('all');
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
   const galleryGridRef = useRef(null);
 
   const galleryItems = [
@@ -15,82 +18,85 @@ const Gallery = () => {
       id: 1,
       category: "art",
       title: "Traditional Tharu Wall Painting",
-      desc: "Ornate geometric clay reliefs carved directly onto cottage outer walls.",
-      image:
-        "https://risingnepaldaily.com/storage/media/58411/THARU-PAINTING.jpg",
+      desc: "Ornate geometric clay reliefs carved directly onto cottage outer walls, depicting sacred animals and nature motifs.",
+      image: "https://risingnepaldaily.com/storage/media/58411/THARU-PAINTING.jpg",
     },
     {
       id: 2,
       category: "art",
-      title: "Tharu Wall Art Kobar",
-      desc: "where the wall make the art",
-      image:
-        "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/482008589_960728476177172_8655726369359576767_n.jpg?stp=dst-jpg_s1080x2048_tt6&_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=Ys4rYLLVVDUQ7kNvwHi4ppw&_nc_oc=AdqC35-aNzNnYZPHK4rXMewA8aOZb2HNCTjsY97zzyCnjdMOH236gd1L8s8rnYb_dRDh1pOOs7fUhXxUHQeeAT-D&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=dvAkBzkg-iA5GlfkYhSJ2Q&_nc_ss=7b289&oh=00_Af6icTE02QYdPOFPx1l3jcHBFjhAX7JEhb5X-znR--erDA&oe=6A1F8B9B",
+      title: "Tharu Wall Art — Kobar Design",
+      desc: "Intricate wall murals where clay meets canvas — every stroke tells the story of Tharu spiritual life.",
+      image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800",
     },
     {
       id: 3,
       category: "dress",
       title: "Traditional Tharu Bridal Attire",
-      desc: "Elegant red-bordered white saris decorated with hand-sewn shells and silver thread.",
-      image:
-        "https://scontent.fbir1-1.fna.fbcdn.net/v/t1.6435-9/174327173_716116169100043_3553318233771004604_n.jpg?stp=dst-jpg_p960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_ohc=jZvuOKHTaD0Q7kNvwH4d4Hh&_nc_oc=AdrtY3rxFxrNA8HrqqS1oRea7eY93dG0mq0rGtUeVm29TGawXDUie1GAvvaVbzVDvvE6J2FWLDM7mc-1XJLeVPl4&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=9_OqkMtbC2Tiim-0xGTHhQ&_nc_ss=7b289&oh=00_Af9BObJ2MbZL_VRFNITygYVfOcqon1zXQWRDWIclJCB9Qw&oe=6A488B31",
+      desc: "Elegant red-bordered white saris decorated with hand-sewn shells and silver thread, worn during sacred wedding ceremonies.",
+      image: "https://www.chitwantourism.com/wp-content/uploads/2024/01/tharu-village-gallery-5.jpg",
     },
     {
       id: 4,
       category: "crafts",
       title: "Jute and Bamboo Dhaki Basketry",
-      desc: "Durable, vibrant coiled grass baskets used for carrying grains and flowers.",
-      image:
-        "https://cdn.shopify.com/s/files/1/1194/1498/files/02-IMG-20240708-WA0034.jpg?v=1735196903",
-    },
-    {
-      id: 4,
-      category: "art",
-      title: "Clay relief peacock carvings",
-      desc: "Sacred clay mold designs representing long life and positive energy.",
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Mokha_Art13.jpg/250px-Mokha_Art13.jpg",
+      desc: "Durable, vibrant coiled grass baskets used for carrying grains and flowers, handcrafted with generations of skill.",
+      image: "https://cdn.shopify.com/s/files/1/1194/1498/files/02-IMG-20240708-WA0034.jpg?v=1735196903",
     },
     {
       id: 5,
-      category: "dress",
-      title: "Ethnic Silver Hansuli & Jewelry",
-      desc: "Thick, handcrafted sterling silver collar necklets worn during ceremonial dances.",
-      image: "https://risingnepaldaily.com/storage/media/87607/Untitled-1.jpg",
+      category: "art",
+      title: "Clay Relief Peacock Carvings",
+      desc: "Sacred clay mold designs representing long life and positive energy, adorning the walls of Tharu homes.",
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Mokha_Art13.jpg/250px-Mokha_Art13.jpg",
     },
     {
       id: 6,
-      category: "art",
-      title: "Tharu Women Traditionally Working Together",
-      desc: "Tharu women working together and sharing their cultural stories.",
-      image:
-        "https://ajadynasty.com/wp-content/uploads/2022/06/16642019622_ecc3c0a489_o-1.jpg",
+      category: "dress",
+      title: "Ethnic Silver Hansuli & Jewelry",
+      desc: "Thick, handcrafted sterling silver collar necklets worn during ceremonial dances and cultural celebrations.",
+      image: "https://risingnepaldaily.com/storage/media/87607/Untitled-1.jpg",
     },
-
     {
       id: 7,
       category: "art",
-      title: "Tharu Traditional Tattoo Art",
-      desc: "Traditional Tharu body art created as part of identity, ritual, and celebration.",
-      image:
-        "https://media.nepalitimes.com/1/p/20250118140116_6eb8b5b2129dd3ed687e2d77eeed7f11107aa7b4320eac00396c64130c7dbe17.jpg",
+      title: "Tharu Women Working Together",
+      desc: "Tharu women working together and sharing their cultural stories through daily communal activities.",
+      image: "https://ajadynasty.com/wp-content/uploads/2022/06/16642019622_ecc3c0a489_o-1.jpg",
     },
-
     {
       id: 8,
       category: "art",
-      title: "Tharu People Working Together",
-      desc: "Community life in Tharu villages revolves around shared labor, storytelling, and celebration.",
-      image:
-        "https://www.chitwantourism.com/wp-content/uploads/2024/01/tharu-village-gallery-5.jpg",
+      title: "Traditional Tharu Tattoo Art",
+      desc: "Traditional Tharu body art created as part of identity, ritual, and celebration — a living heritage on skin.",
+      image: "https://media.nepalitimes.com/1/p/20250118140116_6eb8b5b2129dd3ed687e2d77eeed7f11107aa7b4320eac00396c64130c7dbe17.jpg",
     },
     {
       id: 9,
       category: "art",
+      title: "Community Life in Action",
+      desc: "Community life in Tharu villages revolves around shared labor, storytelling, and collective celebration.",
+      image: "https://scsuman.com/wp-content/uploads/2017/02/mokha_01.jpg",
+    },
+    {
+      id: 10,
+      category: "art",
       title: "Tharu Marriage Celebration",
-      desc: "A joyful wedding scene featuring traditional dress and ceremonial rituals.",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCa6fWJj2778F_YW46Lg2NfEjtwQi0asTLJQ&s",
+      desc: "A joyful wedding scene featuring traditional dress, ceremonial rituals, and vibrant community participation.",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCa6fWJj2778F_YW46Lg2NfEjtwQi0asTLJQ&s",
+    },
+    {
+      id: 11,
+      category: "crafts",
+      title: "Handwoven Tharu Mats & Textiles",
+      desc: "Colorful handwoven textiles and floor mats crafted using traditional looms and natural dyes from local plants.",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsNBxw_cZ2niHrQSTSH_EFjso5Cj25nYe1og&s",
+    },
+    {
+      id: 12,
+      category: "dress",
+      title: "Tharu Cultural Dance Costume",
+      desc: "Vibrant performance costumes adorned with mirrors, embroidery, and bells worn during traditional stick dances.",
+      image: "https://whatthenepal.com/wp-content/uploads/2024/01/WhatsApp-Image-2024-01-17-at-13.23.13.jpeg",
     },
   ];
 
@@ -98,11 +104,22 @@ const Gallery = () => {
     ? galleryItems
     : galleryItems.filter(item => item.category === filter);
 
+  const categories = [
+    { id: 'all', name: 'Show All' },
+    { id: 'art', name: 'Traditional Art' },
+    { id: 'dress', name: 'Dress & Attire' },
+    { id: 'crafts', name: 'Artwork & Crafts' }
+  ];
+
+  const getCategoryCount = (catId) => {
+    if (catId === 'all') return galleryItems.length;
+    return galleryItems.filter(item => item.category === catId).length;
+  };
+
   useEffect(() => {
-    // ScrollTrigger batch animate gallery cards on mount & filter change
+    if (!galleryGridRef.current) return;
     const cards = galleryGridRef.current.querySelectorAll('.gallery-card');
 
-    // Set initial properties for reveal
     gsap.set(cards, { opacity: 0, y: 40, scale: 0.95 });
 
     const batch = ScrollTrigger.batch(cards, {
@@ -111,14 +128,13 @@ const Gallery = () => {
           opacity: 1,
           y: 0,
           scale: 1,
-          duration: 0.8,
-          stagger: 0.1,
+          duration: 0.6,
+          stagger: 0.08,
           ease: 'power3.out',
           overwrite: 'auto',
         });
       },
       onLeaveSibling: (elements) => {
-        // Fallback for scrolling backwards nicely
         gsap.set(elements, { opacity: 1, y: 0, scale: 1 });
       }
     });
@@ -128,12 +144,22 @@ const Gallery = () => {
     };
   }, [filter]);
 
-  const categories = [
-    { id: 'all', name: 'Show All' },
-    { id: 'art', name: 'Traditional Art' },
-    { id: 'dress', name: 'Dress & Attire' },
-    { id: 'crafts', name: 'Artwork & Crafts' }
-  ];
+  const openLightbox = (index) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = useCallback(() => {
+    setLightboxOpen(false);
+  }, []);
+
+  const nextImage = useCallback(() => {
+    setLightboxIndex((prev) => (prev + 1) % filteredItems.length);
+  }, [filteredItems.length]);
+
+  const prevImage = useCallback(() => {
+    setLightboxIndex((prev) => (prev - 1 + filteredItems.length) % filteredItems.length);
+  }, [filteredItems.length]);
 
   return (
     <Transition>
@@ -146,10 +172,10 @@ const Gallery = () => {
             <Palette size={14} />
             <span>Visual Splendor</span>
           </div>
-          <h1 className="font-serif font-bold text-4xl md:text-6xl text-slate tracking-wide">
+          <h1 className="font-bold text-4xl md:text-6xl text-slate tracking-wide">
             Tharu Cultural <span className="text-terracotta">Gallery</span>
           </h1>
-          <div className="h-[2px] w-20 bg-ochre mx-auto animate-pulse" />
+          <div className="h-[2px] w-20 bg-ochre mx-auto animate-pulse rounded-full" />
           <p className="text-lg text-slate/75 leading-relaxed font-light max-w-2xl mx-auto">
             Discover a visual showcase of our detailed wall murals, beautiful festive costumes, and handmade organic household artifacts.
           </p>
@@ -162,51 +188,51 @@ const Gallery = () => {
               <button
                 key={cat.id}
                 onClick={() => setFilter(cat.id)}
-                className={`px-5 py-3 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 border ${filter === cat.id
-                  ? 'bg-terracotta border-terracotta text-cream shadow-md scale-105'
+                className={`px-5 py-3 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 border flex items-center space-x-2 ${filter === cat.id
+                  ? 'bg-terracotta border-terracotta text-cream shadow-lg scale-105'
                   : 'bg-cream-light border-terracotta/15 text-slate/85 hover:border-terracotta/40 hover:bg-cream-dark'
                   }`}
               >
-                {cat.name}
+                <span>{cat.name}</span>
+                <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${filter === cat.id ? 'bg-cream/20' : 'bg-terracotta/10 text-terracotta'}`}>
+                  {getCategoryCount(cat.id)}
+                </span>
               </button>
             ))}
           </div>
         </section>
 
-        {/* GALLERY MASONRY/GRID CONTAINER */}
+        {/* GALLERY GRID CONTAINER */}
         <section className="max-w-7xl mx-auto px-6 md:px-12">
           <div
             ref={galleryGridRef}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[400px]"
           >
-            {filteredItems.map((item) => (
+            {filteredItems.map((item, index) => (
               <div
                 key={item.id}
-                className="gallery-card bg-cream-light rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-terracotta/10 group"
+                className="gallery-card bg-cream-light rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-terracotta/10 group cursor-pointer card-hover-lift"
+                onClick={() => openLightbox(index)}
               >
-                {/* Visual card top */}
                 <div className="relative aspect-[4/3] overflow-hidden bg-slate-dark">
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 group-hover:filter group-hover:brightness-75"
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-75"
                   />
-                  {/* Hover visual details overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-slate/80 via-slate/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                    <div className="text-cream flex items-center space-x-2 text-xs uppercase tracking-widest font-bold font-sans">
+                    <div className="text-cream flex items-center space-x-2 text-xs uppercase tracking-widest font-bold">
                       <Eye size={16} className="text-ochre" />
-                      <span>View details</span>
+                      <span>Click to view</span>
                     </div>
                   </div>
-                  {/* Category Indicator Tag */}
                   <span className="absolute top-4 right-4 bg-slate/85 text-cream text-[10px] uppercase font-bold tracking-widest px-3 py-1.5 rounded-full border border-cream/10 backdrop-blur-sm">
                     {item.category}
                   </span>
                 </div>
 
-                {/* Text card bottom */}
                 <div className="p-6 space-y-3">
-                  <h3 className="font-serif font-bold text-lg text-slate leading-tight transition-colors duration-300 group-hover:text-terracotta">
+                  <h3 className="font-bold text-lg text-slate leading-tight transition-colors duration-300 group-hover:text-terracotta">
                     {item.title}
                   </h3>
                   <p className="text-slate/70 text-xs leading-relaxed font-light">
@@ -224,6 +250,16 @@ const Gallery = () => {
           )}
         </section>
 
+        {/* Lightbox Modal */}
+        {lightboxOpen && (
+          <ImageLightbox
+            images={filteredItems}
+            currentIndex={lightboxIndex}
+            onClose={closeLightbox}
+            onPrev={prevImage}
+            onNext={nextImage}
+          />
+        )}
       </div>
     </Transition>
   );
