@@ -23,7 +23,7 @@ const Footer = () => {
       {/* Decorative Traditional Clay Pattern overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(#C05C3E_0.8px,transparent_0.8px)] [background-size:24px_24px] opacity-5 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
         {/* Brand Column */}
         <div className="space-y-5">
           <Link to="/" className="flex items-center space-x-3 group">
@@ -165,12 +165,12 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12 mb-12">
         <div className="relative overflow-hidden rounded-[2rem] border border-cream/15 bg-slate/95 bg-gradient-to-br from-slate/95 via-slate-dark to-slate/90 p-10 shadow-2xl">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(217,155,38,0.32),_transparent_28%)] pointer-events-none opacity-50" />
-          <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6">
-            <div className="space-y-3 text-cream">
-              <p className="text-sm uppercase tracking-[0.35em] text-ochre/80 font-semibold">
+          <div className="relative z-10 flex flex-col lg:flex-row items-center text-center lg:text-left justify-between gap-8">
+            <div className="space-y-4 text-cream">
+              <p className="text-xs md:text-sm uppercase tracking-[0.35em] text-ochre/80 font-semibold">
                 Join the cultural journey
               </p>
-              <h3 className="text-3xl font-bold tracking-tight text-cream">
+              <h3 className="text-2xl lg:text-3xl font-bold tracking-tight text-cream">
                 Stay updated with village festivals, food stories and homestay
                 offers.
               </h3>
