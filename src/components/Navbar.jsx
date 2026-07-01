@@ -85,7 +85,7 @@ const Navbar = () => {
           <div className="bg-terracotta p-2 rounded-xl text-cream-light shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
             <Landmark size={24} />
           </div>
-          <span className="font-bold text-xl tracking-wide">
+          <span className="font-bold text-lg md:text-xl tracking-wide">
             Tharu <span className="text-terracotta">Village</span>
           </span>
         </NavLink>
@@ -122,8 +122,8 @@ const Navbar = () => {
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
           aria-label="Toggle menu"
-          className="md:hidden p-2 text-slate hover:text-terracotta transition-colors duration-300 focus:outline-none rounded-lg hover:bg-terracotta/10">
-          {isOpen ? <X size={26} /> : <Menu size={26} />}
+          className="md:hidden p-3 text-slate hover:text-terracotta transition-colors duration-300 focus:outline-none rounded-lg hover:bg-terracotta/10">
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
