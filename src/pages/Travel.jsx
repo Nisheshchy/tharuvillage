@@ -28,12 +28,12 @@ const BookingForm = () => {
       toast('Please fill in all required fields.', 'warning');
       return;
     }
-    toast(`🎉 Thank you, ${form.name}! Your inquiry for ${form.village} has been received. We'll contact you within 24 hours.`, 'success');
+    toast(`Thank you, ${form.name}! Your inquiry for ${form.village} has been received. We'll contact you within 24 hours.`, 'success');
     setForm({ name: '', email: '', phone: '', village: '', date: '', message: '' });
   };
 
   return (
-    <div className="glass-card rounded-3xl p-8 md:p-12 border border-terracotta/15">
+    <div className="glass-card rounded-3xl p-6 sm:p-8 md:p-12 border border-terracotta/15">
       <h3 className="font-bold text-2xl text-slate mb-2">Book Your Ecotour</h3>
       <p className="text-slate/70 text-sm mb-8">Fill in the form below and our cultural coordinator will reach out within 24 hours.</p>
 
@@ -50,7 +50,7 @@ const BookingForm = () => {
                 onChange={handleChange}
                 placeholder="Your full name"
                 required
-                className="form-input form-input-light pl-11"
+                className="form-input form-input-light text-base pl-11"
               />
             </div>
           </div>
@@ -65,7 +65,7 @@ const BookingForm = () => {
                 onChange={handleChange}
                 placeholder="your@email.com"
                 required
-                className="form-input form-input-light pl-11"
+                className="form-input form-input-light text-base pl-11"
               />
             </div>
           </div>
@@ -82,7 +82,7 @@ const BookingForm = () => {
                 value={form.phone}
                 onChange={handleChange}
                 placeholder="+977-XXXXXXXXXX"
-                className="form-input form-input-light pl-11"
+                className="form-input form-input-light text-base pl-11"
               />
             </div>
           </div>
@@ -95,7 +95,7 @@ const BookingForm = () => {
                 value={form.village}
                 onChange={handleChange}
                 required
-                className="form-input form-input-light pl-11 appearance-none cursor-pointer"
+                className="form-input form-input-light text-base pl-11 appearance-none cursor-pointer"
               >
                 <option value="">Select a village</option>
                 <option value="Chitwan Tharu Village">Chitwan Tharu Village</option>
@@ -130,7 +130,7 @@ const BookingForm = () => {
             onChange={handleChange}
             rows={3}
             placeholder="Tell us about your interests, group size, or special requests..."
-            className="form-input form-input-light resize-none"
+            className="form-input form-input-light text-base resize-none"
           />
         </div>
 
@@ -306,7 +306,7 @@ const Travel = () => {
   }, []);
 
   const handleBookNow = (placeName) => {
-    toast(`🏠 Booking request for ${placeName} noted! Scroll down to fill the booking form.`, 'info');
+    toast(`Booking request for ${placeName} noted! Scroll down to fill the booking form.`, 'info');
   };
 
   return (

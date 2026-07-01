@@ -370,7 +370,7 @@ const Home = () => {
               <span>Indigenous Heritage of Nepal</span>
             </div>
 
-            <h1 className="hero-fade font-bold text-4xl sm:text-6xl md:text-7xl leading-tight tracking-wide mb-6">
+            <h1 className="hero-fade font-bold text-3xl sm:text-5xl md:text-7xl leading-tight tracking-wide mb-6">
               Welcome to the Heart of <br />
               <span className="gradient-text">Tharu Culture</span>
             </h1>
@@ -382,13 +382,13 @@ const Home = () => {
             <div className="hero-fade flex flex-col sm:flex-row justify-center items-center gap-5">
               <Link
                 to="/about"
-                className="w-full sm:w-auto bg-terracotta hover:bg-terracotta-dark text-cream font-bold px-8 py-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center space-x-2 hover:scale-[1.04] hover:-translate-y-1">
+                className="w-full sm:w-auto bg-terracotta hover:bg-terracotta-dark text-cream font-bold px-6 py-3 sm:px-8 sm:py-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center space-x-2 hover:scale-[1.04] hover:-translate-y-1">
                 <span>Discover Our Story</span>
                 <ArrowRight size={18} />
               </Link>
               <Link
                 to="/travel"
-                className="w-full sm:w-auto bg-cream-light/10 hover:bg-cream-light/20 text-cream font-bold px-8 py-4 rounded-xl border border-cream/20 backdrop-blur-sm transition-all duration-300 flex items-center justify-center space-x-2 hover:scale-[1.04] hover:-translate-y-1">
+                className="w-full sm:w-auto bg-cream-light/10 hover:bg-cream-light/20 text-cream font-bold px-6 py-3 sm:px-8 sm:py-4 rounded-xl border border-cream/20 backdrop-blur-sm transition-all duration-300 flex items-center justify-center space-x-2 hover:scale-[1.04] hover:-translate-y-1">
                 <Compass size={18} className="text-ochre" />
                 <span>Explore Destinations</span>
               </Link>
