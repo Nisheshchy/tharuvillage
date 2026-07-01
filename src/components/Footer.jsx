@@ -170,7 +170,7 @@ const Footer = () => {
               <p className="text-xs md:text-sm uppercase tracking-[0.35em] text-ochre/80 font-semibold">
                 Join the cultural journey
               </p>
-              <h3 className="text-2xl lg:text-3xl font-bold tracking-tight text-cream">
+              <h3 className="text-xl md:text-2xl lg:text-3xl font-bold tracking-tight text-cream">
                 Stay updated with village festivals, food stories and homestay
                 offers.
               </h3>

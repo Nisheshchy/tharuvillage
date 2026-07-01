@@ -116,7 +116,7 @@ const Food = () => {
   }, []);
 
   const handleCookingClass = (dishName) => {
-    toast(`🍳 A local cooking class for ${dishName} is coming soon! Stay tuned for booking details.`, 'info');
+    toast(`A local cooking class for ${dishName} is coming soon! Stay tuned for booking details.`, 'info');
   };
 
   const featuredDish = dishes.find(d => d.featured);
@@ -160,10 +160,10 @@ const Food = () => {
                     <span>Recipe of the Day</span>
                   </div>
                 </div>
-                <div className="relative p-10 lg:p-14 flex flex-col justify-center space-y-6">
+                <div className="relative p-6 sm:p-10 lg:p-14 flex flex-col justify-center space-y-6">
                   <div>
                     <span className="text-ochre text-xs font-bold uppercase tracking-widest">{featuredDish.type}</span>
-                    <h2 className="font-bold text-3xl md:text-4xl mt-2">{featuredDish.name}</h2>
+                    <h2 className="font-bold text-2xl md:text-3xl lg:text-4xl mt-2">{featuredDish.name}</h2>
                   </div>
                   <p className="text-cream/80 leading-relaxed font-light">{featuredDish.desc}</p>
                   <div className="flex items-center space-x-6 text-sm">
