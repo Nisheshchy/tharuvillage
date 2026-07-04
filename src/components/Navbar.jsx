@@ -74,6 +74,7 @@ const Navbar = () => {
     { name: 'Gallery', path: '/gallery' },
     { name: 'Traditional Food', path: '/food' },
     { name: 'Travel Places', path: '/travel' },
+    { name: 'Music', path: '/music' },
     { name: 'About Us', path: '/about' },
   ];
 
