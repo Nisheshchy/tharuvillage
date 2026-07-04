@@ -8,6 +8,7 @@ import About from './pages/About';
 import Gallery from './pages/Gallery';
 import Food from './pages/Food';
 import Travel from './pages/Travel';
+import Music from './pages/Music';
 import NotFound from './pages/NotFound';
 import { ToastProvider } from './components/Toast';
 
@@ -50,6 +51,7 @@ function App() {
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/food" element={<Food />} />
             <Route path="/travel" element={<Travel />} />
+            <Route path="/music" element={<Music />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
