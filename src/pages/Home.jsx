@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Compass, UtensilsCrossed, Palette, Landmark, ShieldCheck, Star, ChevronLeft, ChevronRight, Calendar, Users, MapPin, Sparkles } from 'lucide-react';
 import gsap from 'gsap';
@@ -69,42 +69,43 @@ const CounterSection = () => {
   );
 };
 
+const testimonials = [
+  {
+    name: "Sarah Mitchell",
+    role: "Travel Blogger, UK",
+    text: "Visiting Tharu Village was a life-changing experience. The mud-relief art on every home tells a story of centuries. I've never felt such warmth from a community.",
+    rating: 5,
+  },
+  {
+    name: "Rajesh Thapa",
+    role: "Cultural Researcher, Nepal",
+    text: "The Tharu people's connection to nature is extraordinary. Their clay architecture, organic farming, and folk dances represent a heritage that must be preserved.",
+    rating: 5,
+  },
+  {
+    name: "Emily Chen",
+    role: "Documentary Filmmaker, Canada",
+    text: "I spent a week filming in Sauraha and was captivated by the stick dance performances, the handmade pottery, and the incredible flavors of Ghongi and Bagiya.",
+    rating: 5,
+  },
+  {
+    name: "David Werner",
+    role: "Ecotourism Expert, Germany",
+    text: "Chitwan's Tharu homestays set the gold standard for sustainable ecotourism. The community-run museums and guided forest walks are absolutely world-class.",
+    rating: 5,
+  },
+];
+
 const TestimonialsSection = () => {
   const [current, setCurrent] = useState(0);
-  const testimonials = [
-    {
-      name: "Sarah Mitchell",
-      role: "Travel Blogger, UK",
-      text: "Visiting Tharu Village was a life-changing experience. The mud-relief art on every home tells a story of centuries. I've never felt such warmth from a community.",
-      rating: 5,
-    },
-    {
-      name: "Rajesh Thapa",
-      role: "Cultural Researcher, Nepal",
-      text: "The Tharu people's connection to nature is extraordinary. Their clay architecture, organic farming, and folk dances represent a heritage that must be preserved.",
-      rating: 5,
-    },
-    {
-      name: "Emily Chen",
-      role: "Documentary Filmmaker, Canada",
-      text: "I spent a week filming in Sauraha and was captivated by the stick dance performances, the handmade pottery, and the incredible flavors of Ghongi and Bagiya.",
-      rating: 5,
-    },
-    {
-      name: "David Werner",
-      role: "Ecotourism Expert, Germany",
-      text: "Chitwan's Tharu homestays set the gold standard for sustainable ecotourism. The community-run museums and guided forest walks are absolutely world-class.",
-      rating: 5,
-    },
-  ];
 
-  const next = () => setCurrent((prev) => (prev + 1) % testimonials.length);
-  const prev = () => setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  const next = useCallback(() => setCurrent((prev) => (prev + 1) % testimonials.length), []);
+  const prev = useCallback(() => setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length), []);
 
   useEffect(() => {
     const interval = setInterval(next, 6000);
     return () => clearInterval(interval);
-  }, [current]);
+  }, [next]);
 
   const t = testimonials[current];
 
