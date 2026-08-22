@@ -3,7 +3,7 @@ import { Compass, MapPin, Calendar, ShieldCheck, Star, Send, User, Mail, Phone, 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Transition from '../components/Transition';
-import { useToast } from '../components/Toast';
+import { useToast } from '../hooks/useToast';
 
 gsap.registerPlugin(ScrollTrigger);
 
