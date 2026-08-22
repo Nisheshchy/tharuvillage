@@ -3,7 +3,7 @@ import { Utensils, Landmark, Flame, Clock, Star } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Transition from '../components/Transition';
-import { useToast } from '../components/Toast';
+import { useToast } from '../hooks/useToast';
 
 gsap.registerPlugin(ScrollTrigger);
 
