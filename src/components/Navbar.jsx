@@ -1,23 +1,21 @@
 // Updated Navbar.jsx with accessibility, performance, and security improvements
 import { useState, useEffect, useRef } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Menu, X, Landmark } from 'lucide-react';
 import gsap from 'gsap';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const navRef = useRef(null);
   const menuBtnRef = useRef(null);
   const mobileMenuRef = useRef(null);
-  const location = useLocation();
 
   // Sticky scroll handling with requestAnimationFrame throttling
   useEffect(() => {
     let ticking = false;
     const handleScroll = () => {
-      if (!navRef.current) return;
-      const scrolled = window.scrollY > 50;
-      navRef.current.dataset.scrolled = scrolled ? 'true' : 'false';
+      setScrolled(window.scrollY > 50);
     };
     const onScroll = () => {
       if (!ticking) {
@@ -64,11 +62,6 @@ const Navbar = () => {
     return () => ctx.revert();
   }, [isOpen]);
 
-  // Close mobile menu on navigation change
-  useEffect(() => {
-    setIsOpen(false);
-  }, [location]);
-
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Gallery', path: '/gallery' },
@@ -78,9 +71,13 @@ const Navbar = () => {
     { name: 'About Us', path: '/about' },
   ];
 
-  const navbarClasses = `fixed top-0 left-0 w-full z-50 transition-all duration-500 py-4 md:py-5 border-b border-terracotta/5 backdrop-blur-xl ${navRef.current?.dataset.scrolled === 'true'
-    ? 'shadow-2xl bg-slate/95 backdrop-blur-2xl'
-    : 'bg-transparent'}`;
+  const closeMobileMenu = () => setIsOpen(false);
+
+  const navbarClasses = `fixed top-0 left-0 w-full z-50 transition-all duration-500 py-4 md:py-5 border-b border-terracotta/5 backdrop-blur-xl ${
+    scrolled
+      ? 'shadow-2xl bg-slate/95 backdrop-blur-2xl'
+      : 'bg-transparent'
+  }`;
 
   return (
     <nav ref={navRef} role="navigation" className={navbarClasses}>
@@ -88,6 +85,7 @@ const Navbar = () => {
         {/* Logo Section */}
         <NavLink
           to="/"
+          onClick={closeMobileMenu}
           className="flex items-center space-x-3 text-slate hover:opacity-90 group transition-all duration-300"
         >
           <div className="bg-terracotta p-2 rounded-xl text-cream-light shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
@@ -157,6 +155,7 @@ const Navbar = () => {
               <NavLink
                 key={link.path}
                 to={link.path}
+                onClick={closeMobileMenu}
                 className={({ isActive }) =>
                   `mobile-link text-lg font-medium py-2 px-3 transition-all duration-300 rounded-lg ${
                     isActive
@@ -171,6 +170,7 @@ const Navbar = () => {
             <div className="mobile-link pt-4">
               <NavLink
                 to="/travel"
+                onClick={closeMobileMenu}
                 className="block text-center bg-terracotta hover:bg-terracotta-dark text-cream font-semibold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02]"
               >
                 Plan Journey

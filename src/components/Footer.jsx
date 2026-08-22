@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Landmark, Mail, Phone, MapPin, Globe, Hash, ExternalLink, Heart } from 'lucide-react';
-import { useToast } from './Toast';
+import { useToast } from '../hooks/useToast';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
