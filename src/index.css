@@ -43,6 +43,7 @@
 
 @utility tharu-border-top {
   position: relative;
+
   &::before {
     content: '';
     position: absolute;
@@ -50,18 +51,17 @@
     left: 0;
     right: 0;
     height: 6px;
-    background-image: repeating-linear-gradient(
-      45deg,
-      #C05C3E 0px,
-      #C05C3E 10px,
-      #D99B26 10px,
-      #D99B26 20px
-    );
+    background-image: repeating-linear-gradient(45deg,
+        #C05C3E 0px,
+        #C05C3E 10px,
+        #D99B26 10px,
+        #D99B26 20px);
   }
 }
 
 @utility tharu-border-bottom {
   position: relative;
+
   &::after {
     content: '';
     position: absolute;
@@ -69,42 +69,37 @@
     left: 0;
     right: 0;
     height: 6px;
-    background-image: repeating-linear-gradient(
-      -45deg,
-      #C05C3E 0px,
-      #C05C3E 10px,
-      #D99B26 10px,
-      #D99B26 20px
-    );
+    background-image: repeating-linear-gradient(-45deg,
+        #C05C3E 0px,
+        #C05C3E 10px,
+        #D99B26 10px,
+        #D99B26 20px);
   }
 }
 
 @utility clay-pattern {
   background-color: #F7F4EB;
-  background-image: radial-gradient(
-    #C05C3E 0.5px,
-    transparent 0.5px
-  );
+  background-image: radial-gradient(#C05C3E 0.5px,
+      transparent 0.5px);
   background-size: 20px 20px;
   opacity: 0.15;
 }
 
 @utility clay-relief-border {
   border: 8px solid #C05C3E;
-  border-image: repeating-linear-gradient(
-    45deg,
-    #C05C3E 0 10px,
-    #F7F4EB 0 20px,
-    #D99B26 0 30px,
-    #F7F4EB 0 40px
-  ) 10;
+  border-image: repeating-linear-gradient(45deg,
+      #C05C3E 0 10px,
+      #F7F4EB 0 20px,
+      #D99B26 0 30px,
+      #F7F4EB 0 40px) 10;
 }
 
 @utility horizontal-scroll-snap {
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  & > * {
+
+  &>* {
     scroll-snap-align: start;
   }
 }
@@ -120,6 +115,7 @@
 
 @utility card-hover-lift {
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
   &:hover {
     transform: translateY(-8px);
     box-shadow: 0 25px 60px rgba(31, 36, 33, 0.15);
@@ -129,6 +125,7 @@
 @utility shimmer {
   position: relative;
   overflow: hidden;
+
   &::after {
     content: '';
     position: absolute;
@@ -136,7 +133,7 @@
     left: -100%;
     width: 50%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     animation: shimmer 2.5s ease-in-out infinite;
   }
 }
@@ -167,6 +164,7 @@
 
 @utility animated-border {
   position: relative;
+
   &::before {
     content: '';
     position: absolute;
@@ -253,49 +251,111 @@ select {
 /* ===== KEYFRAME ANIMATIONS ===== */
 
 @keyframes gradientShift {
-  0%, 100% { background-position: 0% center; }
-  50% { background-position: 200% center; }
+
+  0%,
+  100% {
+    background-position: 0% center;
+  }
+
+  50% {
+    background-position: 200% center;
+  }
 }
 
 @keyframes shimmer {
-  0% { left: -100%; }
-  100% { left: 200%; }
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 200%;
+  }
 }
 
 @keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(192, 92, 62, 0.4); }
-  50% { box-shadow: 0 0 20px 10px rgba(192, 92, 62, 0.15); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(192, 92, 62, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 20px 10px rgba(192, 92, 62, 0.15);
+  }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
 }
 
 @keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-40px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes slideInRight {
-  from { opacity: 0; transform: translateX(40px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes slideInUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.8); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes borderRotate {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @keyframes fadeInUp {
@@ -303,6 +363,7 @@ select {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -310,13 +371,23 @@ select {
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ===== PRELOADER ===== */
@@ -451,8 +522,13 @@ select {
   transform: translateY(-50%) scale(1.1);
 }
 
-.lightbox-nav-btn.prev { left: 24px; }
-.lightbox-nav-btn.next { right: 24px; }
+.lightbox-nav-btn.prev {
+  left: 24px;
+}
+
+.lightbox-nav-btn.next {
+  right: 24px;
+}
 
 /* ===== SCROLL TO TOP ===== */
 
@@ -561,19 +637,27 @@ select {
 /* ===== RESPONSIVE ===== */
 
 @media (max-width: 768px) {
-  .lightbox-nav-btn.prev { left: 12px; }
-  .lightbox-nav-btn.next { right: 12px; }
+  .lightbox-nav-btn.prev {
+    left: 12px;
+  }
+
+  .lightbox-nav-btn.next {
+    right: 12px;
+  }
+
   .scroll-to-top-btn {
     bottom: 20px;
     left: 20px;
     width: 44px;
     height: 44px;
   }
+
   .toast-container {
     bottom: 16px;
     right: 16px;
     left: 16px;
   }
+
   .toast-item {
     max-width: 100%;
   }
