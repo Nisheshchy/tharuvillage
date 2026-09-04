@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "savedAt": "2026-09-04T07:33:10.956Z",
+  "agents": [],
+  "archived": [],
+  "restorable": [
+    {
+      "id": "jim-mtlrj59y",
+      "name": "Jim",
+      "character": "jim",
+      "accent": "sky",
+      "description": "investigates and root-causes bugs",
+      "project": "tharu village",
+      "tmuxTarget": "",
+      "cwd": "/Users/nisheshchaudhary/Downloads/code/tharu village",
+      "goal": "For each reported issue: reproduce it, find the root cause, then propose a minimal fix with evidence. No fixes without a confirmed root cause.",
+      "status": "idle",
+      "action": "reconnecting…",
+      "progress": 0,
+      "ptyId": "pty-jim-mtlrj59y",
+      "command": "opencode",
+      "provider": "opencode"
+    },
+    {
+      "id": "pam-mtlrkjm3",
+      "name": "Pam",
+      "character": "pam",
+      "accent": "sky",
+      "description": "investigates and root-causes bugs",
+      "project": "tharu village",
+      "tmuxTarget": "",
+      "cwd": "/Users/nisheshchaudhary/Downloads/code/tharu village",
+      "goal": "For each reported issue: reproduce it, find the root cause, then propose a minimal fix with evidence. No fixes without a confirmed root cause.",
+      "status": "idle",
+      "action": "reconnecting…",
+      "progress": 0,
+      "ptyId": "pty-pam-mtlrkjm3",
+      "command": "opencode",
+      "provider": "opencode"
+    },
+    {
+      "id": "angela-mtlrlezn",
+      "name": "Angela",
+      "character": "angela",
+      "accent": "sky",
+      "description": "gathers and summarizes information",
+      "project": "tharu village",
+      "tmuxTarget": "",
+      "cwd": "/Users/nisheshchaudhary/Downloads/code/tharu village",
+      "goal": "Research the questions you are given across multiple sources, verify the key claims, and return a concise, cited summary.",
+      "status": "idle",
+      "action": "reconnecting…",
+      "progress": 0,
+      "ptyId": "pty-angela-mtlrlezn",
+      "command": "opencode",
+      "provider": "opencode"
+    },
+    {
+      "id": "oscar-mtlrr5br",
+      "name": "Oscar",
+      "character": "oscar",
+      "accent": "sky",
+      "description": "prepares and ships releases",
+      "project": "tharu village",
+      "tmuxTarget": "",
+      "cwd": "/Users/nisheshchaudhary/Downloads/code/tharu village",
+      "goal": "Track what has shipped since the last release, update the changelog and version, and draft clear release notes.",
+      "status": "idle",
+      "action": "reconnecting…",
+      "progress": 0,
+      "ptyId": "pty-oscar-mtlrr5br",
+      "command": "opencode",
+      "provider": "opencode"
+    }
+  ],
+  "queues": {
+    "god": [
+      {
+        "id": "q-1788455343743-5",
+        "text": "You have new hive inbox message(s) — at least: 2026-09-03T17-09-01-833Z-eb6892. Read your inbox, act on what is pending there, and move handled ones to inbox/.done/. Your inbox directory is authoritative: work everything still pending in it, and if a named id is already in inbox/.done/ you handled it on an earlier turn and can ignore that one. Act autonomously; only message god if you genuinely need a decision.",
+        "ts": 1788455343743,
+        "precondition": "inbox-nonempty"
+      }
+    ],
+    "angela-mtlrlezn": [
+      {
+        "id": "q-1788454875719-3",
+        "text": "You have new hive inbox message(s) — at least: 2026-09-03T17-01-12-914Z-e844db. Read your inbox, act on what is pending there, and move handled ones to inbox/.done/. Your inbox directory is authoritative: work everything still pending in it, and if a named id is already in inbox/.done/ you handled it on an earlier turn and can ignore that one. Act autonomously; only message god if you genuinely need a decision.",
+        "ts": 1788454875719,
+        "precondition": "inbox-nonempty"
+      }
+    ],
+    "oscar-mtlrr5br": [
+      {
+        "id": "q-1788455055717-4",
+        "text": "You have new hive inbox message(s) — at least: 2026-09-03T17-04-12-926Z-c3af4b. Read your inbox, act on what is pending there, and move handled ones to inbox/.done/. Your inbox directory is authoritative: work everything still pending in it, and if a named id is already in inbox/.done/ you handled it on an earlier turn and can ignore that one. Act autonomously; only message god if you genuinely need a decision.",
+        "ts": 1788455055717,
+        "precondition": "inbox-nonempty"
+      }
+    ]
+  },
+  "selectedId": null
+}
