@@ -10,6 +10,7 @@ import Food from './pages/Food';
 import Travel from './pages/Travel';
 import Music from './pages/Music';
 import NotFound from './pages/NotFound';
+import CookieConsent from './components/CookieConsent';
 import { ToastProvider } from './components/Toast';
 
 function App() {
@@ -60,6 +61,9 @@ function App() {
 
         {/* Scroll To Top Button */}
         <ScrollToTop />
+        
+        {/* Cookie Consent Banner */}
+        <CookieConsent />
       </div>
     </ToastProvider>
   );
